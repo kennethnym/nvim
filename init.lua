@@ -176,7 +176,6 @@ function setup_plugins()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			theme = "rose-pine",
 			component_separators = "",
 			section_separators = { left = "", right = "" },
 			disabled_filetypes = {
@@ -195,9 +194,9 @@ function setup_plugins()
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = { "branch" },
-			lualine_c = { "os.date('%a %b %d %H:%M')" },
+			lualine_c = {},
 			lualine_x = {},
-			lualine_y = {},
+			lualine_y = { "os.date('%a %b %d %H:%M')" },
 			lualine_z = {},
 		},
 		inactive_sections = {
@@ -378,6 +377,14 @@ PLUGINS = {
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter" },
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "0.1.*",
+		build = function()
+			require("typst-preview").update()
+		end,
+	},
 }
 
 init_lazy_nvim()
