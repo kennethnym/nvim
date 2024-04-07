@@ -57,6 +57,8 @@ function define_keymaps()
 			vim.keymap.set("n", "<space>r", vim.lsp.buf.rename, opts)
 			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+			vim.keymap.set("n", "<space>h", ":ClangdSwitchSourceHeader<CR>", { noremap = true })
 		end,
 	})
 
@@ -238,6 +240,7 @@ function setup_plugins()
 				require("formatter.filetypes.json").biome,
 			},
 			lua = { require("formatter.filetypes.lua").stylua },
+			cpp = { require("formatter.filetypes.cpp").clangformat },
 		},
 	})
 
