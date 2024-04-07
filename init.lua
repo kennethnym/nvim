@@ -105,12 +105,12 @@ function setup_plugins()
 	require("auto-dark-mode").setup({
 		set_dark_mode = function()
 			vim.api.nvim_set_option("background", "dark")
-			vim.cmd("colorscheme catppuccin-mocha")
+			vim.cmd("colorscheme rose-pine")
 		end,
 
 		set_light_mode = function()
 			vim.api.nvim_set_option("background", "light")
-			vim.cmd("colorscheme catppuccin-latte")
+			vim.cmd("colorscheme rose-pine-dawn")
 		end,
 	})
 
@@ -300,7 +300,7 @@ function setup_plugins()
 end
 
 function config_vim()
-	vim.cmd("colorscheme catppuccin")
+	vim.cmd("colorscheme rose-pine")
 
 	vim.opt.tabstop = 2
 	vim.opt.shiftwidth = 2
@@ -326,8 +326,6 @@ end
 
 PLUGINS = {
 	{ "EdenEast/nightfox.nvim" },
-	{ "catppuccin/nvim" },
-	{ "rebelot/kanagawa.nvim" },
 	{ "rose-pine/neovim" },
 	{ "shortcuts/no-neck-pain.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
