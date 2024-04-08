@@ -107,7 +107,7 @@ function setup_plugins()
 	require("auto-dark-mode").setup({
 		set_dark_mode = function()
 			vim.api.nvim_set_option("background", "dark")
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme rose-pine-main")
 		end,
 
 		set_light_mode = function()
@@ -117,7 +117,7 @@ function setup_plugins()
 	})
 
 	require("no-neck-pain").setup({
-		width = 140,
+		width = 120,
 		autocmds = {
 			enableOnVimEnter = true,
 			reloadOnColorSchemeChange = true,
