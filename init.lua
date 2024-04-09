@@ -245,7 +245,6 @@ function setup_plugins()
 	})
 
 	local cmp = require("cmp")
-	local lspkind = require("lspkind")
 	cmp.setup({
 		window = {
 			completion = {
