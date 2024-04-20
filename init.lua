@@ -174,6 +174,9 @@ function setup_plugins()
 			require("lspconfig")[server_name].setup({})
 		end,
 	})
+	require("lspconfig").dartls.setup({
+		cmd = { "dart", "language-server", "--protocol=lsp" },
+	})
 
 	require("lualine").setup({
 		options = {
@@ -241,6 +244,8 @@ function setup_plugins()
 			},
 			lua = { require("formatter.filetypes.lua").stylua },
 			cpp = { require("formatter.filetypes.cpp").clangformat },
+			dart = { require("formatter.filetypes.dart").dartformat },
+			python = { require("formatter.filetypes.python").black },
 		},
 	})
 
