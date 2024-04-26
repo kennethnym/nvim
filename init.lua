@@ -412,6 +412,11 @@ PLUGINS = {
 			require("typst-preview").update()
 		end,
 	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
 }
 
 init_lazy_nvim()

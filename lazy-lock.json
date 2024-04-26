@@ -15,6 +15,7 @@
   "neovim": { "branch": "main", "commit": "9cd7d8aad3606a95d733a45d16275eb7a5a836a3" },
   "nightfox.nvim": { "branch": "main", "commit": "ce0cdf8538c8c0b9c8fb2884d3d1090c8faf515d" },
   "no-neck-pain.nvim": { "branch": "main", "commit": "34625be12649666b7ccb08761087cc97bb788552" },
+  "nvim-autopairs": { "branch": "master", "commit": "4f41e5940bc0443fdbe5f995e2a596847215cd2a" },
   "nvim-cmp": { "branch": "main", "commit": "ce16de5665c766f39c271705b17fff06f7bcb84f" },
   "nvim-lspconfig": { "branch": "master", "commit": "b3014f2209503944f2714cf27c95591433a0c7d8" },
   "nvim-tree.lua": { "branch": "master", "commit": "81eb8d519233c105f30dc0a278607e62b20502fd" },
