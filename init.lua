@@ -107,17 +107,18 @@ function setup_plugins()
 	require("auto-dark-mode").setup({
 		set_dark_mode = function()
 			vim.api.nvim_set_option("background", "dark")
-			vim.cmd("colorscheme rose-pine-main")
+			vim.cmd("colorscheme nightfox")
 		end,
 
 		set_light_mode = function()
 			vim.api.nvim_set_option("background", "light")
-			vim.cmd("colorscheme rose-pine-dawn")
+			vim.cmd("colorscheme dayfox")
 		end,
 	})
 
 	require("no-neck-pain").setup({
 		width = 120,
+		fallbackOnBufferDelete = true,
 		autocmds = {
 			enableOnVimEnter = true,
 			reloadOnColorSchemeChange = true,
@@ -169,9 +170,6 @@ function setup_plugins()
 
 	local lsps = {
 		lua_ls = {
-			-- cmd = {...},
-			-- filetypes = { ...},
-			-- capabilities = {},
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -220,7 +218,7 @@ function setup_plugins()
 		},
 		sections = {
 			lualine_a = { "mode" },
-			lualine_b = { "branch" },
+			lualine_b = { "branch", "diff" },
 			lualine_c = {},
 			lualine_x = {},
 			lualine_y = { "os.date('%a %b %d %H:%M')" },
@@ -239,9 +237,9 @@ function setup_plugins()
 			lualine_a = {},
 			lualine_b = { "filename" },
 			lualine_c = {},
-			lualine_x = { "searchcount", "encoding", "fileformat" },
+			lualine_x = { "searchcount", "encoding", "diagnostics" },
 			lualine_y = { "filetype" },
-			lualine_z = { "location" },
+			lualine_z = {},
 		},
 		inactive_winbar = {},
 		extensions = {},
@@ -329,7 +327,7 @@ function setup_plugins()
 end
 
 function config_vim()
-	vim.cmd("colorscheme rose-pine")
+	vim.cmd("colorscheme nightfox")
 
 	vim.opt.tabstop = 2
 	vim.opt.shiftwidth = 2
@@ -337,6 +335,7 @@ function config_vim()
 	vim.opt.relativenumber = true
 	vim.opt.laststatus = 3
 	vim.opt.cursorline = true
+	vim.opt.pumheight = 10
 
 	vim.filetype.add({
 		extension = {
