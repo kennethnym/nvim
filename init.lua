@@ -167,15 +167,37 @@ function setup_plugins()
 
 	require("nvim-web-devicons").setup()
 
+	local lsps = {
+		lua_ls = {
+			-- cmd = {...},
+			-- filetypes = { ...},
+			-- capabilities = {},
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+					-- You can toggle below to ignore Lua_LS's noisy missing-fields warnings
+					-- diagnostics = { disable = { 'missing-fields' } },
+				},
+			},
+		},
+
+		dartls = {
+			cmd = { "dart", "language-server", "--protocol=lsp" },
+		},
+	}
+
 	require("mason").setup()
 	require("mason-lspconfig").setup()
 	require("mason-lspconfig").setup_handlers({
 		function(server_name)
-			require("lspconfig")[server_name].setup({})
+			local server = lsps[server_name] or {}
+			require("lspconfig")[server_name].setup(server)
 		end,
-	})
-	require("lspconfig").dartls.setup({
-		cmd = { "dart", "language-server", "--protocol=lsp" },
 	})
 
 	require("lualine").setup({
