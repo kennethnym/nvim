@@ -352,8 +352,8 @@ function setup_plugins()
 				end
 			end)
 
-			map("n", "<leader>hr", gitsigns.reset_hunk)
-			map("n", "<leader>hp", gitsigns.preview_hunk)
+			map("n", "<space>hr", gitsigns.reset_hunk)
+			map("n", "<space>hp", gitsigns.preview_hunk)
 		end,
 	})
 end
