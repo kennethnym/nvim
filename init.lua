@@ -324,6 +324,38 @@ function setup_plugins()
 			{ name = "buffer" },
 		}),
 	})
+
+	require("gitsigns").setup({
+		on_attach = function(bufnr)
+			local gitsigns = require("gitsigns")
+
+			local function map(mode, l, r, opts)
+				opts = opts or {}
+				opts.buffer = bufnr
+				vim.keymap.set(mode, l, r, opts)
+			end
+
+			-- Navigation
+			map("n", "]h", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "]h", bang = true })
+				else
+					gitsigns.nav_hunk("next")
+				end
+			end)
+
+			map("n", "[h", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "[h", bang = true })
+				else
+					gitsigns.nav_hunk("prev")
+				end
+			end)
+
+			map("n", "<leader>hr", gitsigns.reset_hunk)
+			map("n", "<leader>hp", gitsigns.preview_hunk)
+		end,
+	})
 end
 
 function config_vim()
@@ -334,8 +366,9 @@ function config_vim()
 	vim.opt.number = true
 	vim.opt.relativenumber = true
 	vim.opt.laststatus = 3
-	vim.opt.cursorline = true
 	vim.opt.pumheight = 10
+	vim.opt.scrolloff = 10
+	vim.opt.listchars = {}
 
 	vim.filetype.add({
 		extension = {
@@ -349,6 +382,10 @@ function config_vim()
 	autocmd("BufWritePost", {
 		group = "__formatter__",
 		command = ":FormatWrite",
+	})
+
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = false,
 	})
 end
 
@@ -402,6 +439,7 @@ PLUGINS = {
 			},
 		},
 	},
+	{ "lewis6991/gitsigns.nvim" },
 	{ "nvim-treesitter/nvim-treesitter" },
 	{
 		"chomosuke/typst-preview.nvim",
